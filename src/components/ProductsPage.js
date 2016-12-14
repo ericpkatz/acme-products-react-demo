@@ -1,4 +1,5 @@
 import React from 'react';
+import ProductForm from './ProductFormComponent';
 
 const ProductItem = ({ product, onDestroyProduct})=> {
   return (
@@ -9,7 +10,7 @@ const ProductItem = ({ product, onDestroyProduct})=> {
 
 }
 
-const ProductsPage = ({ products, onDestroyProduct })=> {
+const ProductsList = ({ products, onDestroyProduct}) => {
   const lis = products.map( product => <ProductItem product={product} onDestroyProduct={ onDestroyProduct }  key={ product.id }/>) 
   return (
       <div className='container'>
@@ -18,6 +19,17 @@ const ProductsPage = ({ products, onDestroyProduct })=> {
         </ul>
       </div>
   );
+};
+
+
+const ProductsPage = ({ products, onDestroyProduct, onCreateProduct })=> {
+  return (
+      <div>
+        <ProductForm onCreateProduct={ onCreateProduct }/>
+        <ProductsList products={ products } onDestroyProduct={ onDestroyProduct} />
+      </div>
+  );
+
 };
 
 export default ProductsPage;

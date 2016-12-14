@@ -9,6 +9,12 @@ app.use('/vendor', express.static(path.join(__dirname, 'node_modules')));
 
 app.get('/', (req, res)=> res.sendFile(path.join(__dirname, 'index.html')));
 
+let products = [
+  { id: 1, name: 'Foo'}, { id: 2, name: 'Bar' }
+];
+
+app.get('/api/products', (req, res)=> res.send(products));
+
 const port = process.env.PORT || 3000;
 
 app.listen(port, ()=> console.log(`listening on port ${port}`));
